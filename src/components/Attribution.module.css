@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+.attribution {
+	font-size: 12px;
+	font-family: 'Raleway';
+}
+
+.attribution a {
+	color: blue;
+	text-decoration: none;
+}
+
+.attribution a:hover {
+	color: rgba(0, 0, 255, 0.8);
+}
+
+.attribution img {
+	margin-left: 5px;
+	margin-top: 5px;
+	width: 12px;
+	height: 12px;
+}
