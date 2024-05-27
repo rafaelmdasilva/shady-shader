@@ -12,6 +12,14 @@ body {
 	user-select: none;
 }
 
+.title,
+.main-wrapper,
+.card-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .title {
 	color: rgb(51, 51, 51);
 	font-size: 80px;
@@ -24,23 +32,22 @@ body {
 }
 
 .main-wrapper {
-	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	width: 100vw;
 	height: 100vh;
 	font-family: 'Raleway';
 }
 
 .card-wrapper {
-	display: flex;
 	gap: 10px;
 }
 
 @media (max-width: 768px) {
 	.title {
-		display: none;
+		width: 290px;
+		height: 80px;
+		font-size: 50px;
+		transform: translateY(-15px);
 	}
 	.card-wrapper {
 		display: flex;
