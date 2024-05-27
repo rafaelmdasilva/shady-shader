@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ColorCard from './components/ColorCard.jsx';
 import GradientCard from './components/GradientCard.jsx';
 
@@ -16,13 +16,11 @@ function App() {
 	const defaultTitle = 'Shady Shader';
 	const gradient = `linear-gradient(to bottom, ${hex}, ${hex2})`;
 
-	fetch(url)
-		.then((response) => {
-			return response.json();
-		})
-		.then((data) => {
-			setParsed(data);
-		});
+	useEffect(() => {
+		fetch(url)
+			.then((response) => response.json())
+			.then((data) => setParsed(data));
+	}, []);
 
 	const ColorShuffle = (index) => {
 		const parsedLength = Object.keys(parsed).length;
