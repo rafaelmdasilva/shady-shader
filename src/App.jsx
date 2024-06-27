@@ -7,30 +7,52 @@ function App() {
 	const url =
 		'https://unpkg.com/color-name-list@10.21.0/dist/colornames.bestof';
 
-	const [name, setName] = useState('Grey Area');
-	const [name2, setName2] = useState('Doctor');
-	const [hex, setHex] = useState('#8F9394');
-	const [hex2, setHex2] = useState('#F9F9F9');
+	const [colorData, setColorData] = useState({
+		first: 'Grey Area',
+		first_hex: '#8F9394',
+		second: 'Doctor',
+		second_hex: '#F9F9F9',
+	});
 	const [parsed, setParsed] = useState('');
 
 	const defaultTitle = 'Shady Shader';
-	const gradient = `linear-gradient(to bottom, ${hex}, ${hex2})`;
+	const gradient = `linear-gradient(to bottom, ${colorData.first_hex}, ${colorData.second_hex})`;
+
+	const fetchColors = async () => {
+		try {
+			const response = await fetch(url);
+			const data = await response.json();
+			setParsed(data);
+		} catch (error) {
+			console.warn('Failed to fetch data from API.', error);
+		}
+	};
 
 	useEffect(() => {
-		fetch(url)
-			.then((response) => response.json())
-			.then((data) => setParsed(data));
+		fetchColors();
 	}, []);
 
-	const ColorShuffle = (index) => {
+	const handleColorShuffle = (index) => {
 		const parsedLength = Object.keys(parsed).length;
 		const random = Math.round(Math.random() * parsedLength);
 		if (index == 1) {
-			setName(parsed[random].name);
-			setHex(parsed[random].hex.toUpperCase());
+			const handleColorData = () => {
+				setColorData((prevColorData) => ({
+					...prevColorData,
+					first: parsed[random].name,
+					first_hex: parsed[random].hex.toUpperCase(),
+				}));
+			};
+			handleColorData();
 		} else {
-			setName2(parsed[random].name);
-			setHex2(parsed[random].hex.toUpperCase());
+			const handleColorData = () => {
+				setColorData((prevColorData) => ({
+					...prevColorData,
+					second: parsed[random].name,
+					second_hex: parsed[random].hex.toUpperCase(),
+				}));
+			};
+			handleColorData();
 		}
 	};
 
@@ -41,17 +63,17 @@ function App() {
 			<div className='card-wrapper'>
 				<ColorCard
 					onColorShuffle={() => {
-						ColorShuffle(1);
+						handleColorShuffle(1);
 					}}
-					name={name}
-					hex={hex}
+					name={colorData.first}
+					hex={colorData.first_hex}
 				/>
 				<ColorCard
 					onColorShuffle={() => {
-						ColorShuffle(2);
+						handleColorShuffle(2);
 					}}
-					name={name2}
-					hex={hex2}
+					name={colorData.second}
+					hex={colorData.second_hex}
 				/>
 			</div>
 			<div className='gradient-wrapper'>
