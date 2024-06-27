@@ -26,9 +26,9 @@ __Hint:__ Every relevant text content can be __quick copied__ to the clipboard b
 
 ### Live Demo
 
-[![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)](https://rafaelmdasilva.github.io/shady-shader-react/)
+[![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)](https://rafaelmdasilva.github.io/shady-shader/)
 
-[![Page Preview](./preview.gif)](https://rafaelmdasilva.github.io/shady-shader-react/)
+[![Page Preview](./preview.gif)](https://rafaelmdasilva.github.io/shady-shader/)
 
 ### Contributions
 

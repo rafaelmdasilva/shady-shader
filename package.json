@@ -1,9 +1,9 @@
 {
-  "name": "shady-shader-react",
+  "name": "shady-shader",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://rafaelmdasilva.github.io/shady-shader-react/",
+  "homepage": "https://rafaelmdasilva.github.io/shady-shader/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
