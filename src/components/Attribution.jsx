@@ -1,5 +1,5 @@
 import styles from './Attribution.module.css';
-import gitLogo from '../../public/github-mark.png';
+import gitLogo from '../assets/github-mark.png';
 
 const Attribution = () => {
 	return (
