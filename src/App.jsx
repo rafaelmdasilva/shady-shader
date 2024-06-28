@@ -13,7 +13,7 @@ function App() {
 		second: 'Doctor',
 		second_hex: '#F9F9F9',
 	});
-	const [parsed, setParsed] = useState('');
+	const [parsed, setParsed] = useState(null);
 
 	const defaultTitle = 'Shady Shader';
 	const gradient = `linear-gradient(to bottom, ${colorData.first_hex}, ${colorData.second_hex})`;
@@ -56,31 +56,39 @@ function App() {
 		}
 	};
 
-	return (
-		<div className='main-wrapper' style={{ background: gradient }}>
-			<h1 className='title'>{defaultTitle}</h1>
+	if (parsed !== null) {
+		return (
+			<div className='main-wrapper' style={{ background: gradient }}>
+				<h1 className='title'>{defaultTitle}</h1>
 
-			<div className='card-wrapper'>
-				<ColorCard
-					onColorShuffle={() => {
-						handleColorShuffle(1);
-					}}
-					name={colorData.first}
-					hex={colorData.first_hex}
-				/>
-				<ColorCard
-					onColorShuffle={() => {
-						handleColorShuffle(2);
-					}}
-					name={colorData.second}
-					hex={colorData.second_hex}
-				/>
+				<div className='card-wrapper'>
+					<ColorCard
+						onColorShuffle={() => {
+							handleColorShuffle(1);
+						}}
+						name={colorData.first}
+						hex={colorData.first_hex}
+					/>
+					<ColorCard
+						onColorShuffle={() => {
+							handleColorShuffle(2);
+						}}
+						name={colorData.second}
+						hex={colorData.second_hex}
+					/>
+				</div>
+				<div className='gradient-wrapper'>
+					<GradientCard gradient={gradient} />
+				</div>
 			</div>
-			<div className='gradient-wrapper'>
-				<GradientCard gradient={gradient} />
-			</div>
-		</div>
-	);
+		);
+	} else {
+		return (
+			<>
+				<h1>Loading...</h1>
+			</>
+		);
+	}
 }
 
 export default App;
